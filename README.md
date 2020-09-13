@@ -28,10 +28,10 @@ A [HoshinoBot](https://github.com/Ice-Cirno/HoshinoBot) based [PCR](http://prico
 
 3. 打开`hoshino/config/`文件夹中的`__bot__.py`文件，在`MODULES_ON`中加入一行`'voiceguess',`
 
-4. 运行bot，并在群中发送"cygames"指令。第一次使用时机器人会自动从干炸里脊资源站下载全角色的"cygames"语音，语音是m4a格式，请等待它下完。
+4. 运行bot，并在群中发送"cygames"指令。第一次使用时机器人会自动从干炸里脊资源站下载全角色的"cygames"语音，语音是m4a格式，请等待它下完。下载的m4a语音存放在HoshinoBot的资源文件夹`res/voice_ci`中。
 
-5. 前往[silk-v3-decoder](https://github.com/kn007/silk-v3-decoder)项目的[Releases页面](https://github.com/kn007/silk-v3-decoder/releases)下载silk格式转换器。下好后运行，转换模式一定要选“特殊编码 (兼容QQ/微信)”，不然即使转好silk格式go-cqhttp也不认。
+5. 前往[silk-v3-decoder](https://github.com/kn007/silk-v3-decoder)项目的[Releases页面](https://github.com/kn007/silk-v3-decoder/releases)下载silk格式转换器。下好后运行使用。注意转换模式一定要选`特殊编码 (兼容QQ/微信)`，不然即使转好silk格式go-cqhttp也不认。
 
-6. 将转换好的全部silk格式语音文件放入HoshinoBot的资源文件夹`res/voice_ci`中，并把这个文件夹里之前的m4a语音文件全部删除。
+6. 将转换好的全部silk格式语音文件放回HoshinoBot的资源文件夹`res/voice_ci`中，并把这个文件夹里之前的m4a语音文件全部删除。
 
 7. 现在可以正常使用猜语音插件了~ 
