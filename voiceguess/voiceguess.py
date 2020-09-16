@@ -82,7 +82,7 @@ async def download_voice_ci(bot, ev: CQEvent, logger):
                     else:
                         logger.info(f'下载{file_name}成功!')
                         count = count + 1
-        await bot.send(ev, f'下载完毕，此次下载"cygames"语音包{count}个，目前共{len(os.listdir(DIR_PATH))}个. 请使用软件将它们批量转换为silk格式.')
+        await bot.send(ev, f'下载完毕，此次下载"cygames"语音包{count}个，目前共{len(os.listdir(DIR_PATH))}个. 如果您使用的是go-cqhttp，请用软件将它们批量转换为silk格式，否则无法发送.')
 
 
 @sv.on_fullmatch(("猜语音排行", "猜语音排行榜", "猜语音群排行"))
