@@ -105,9 +105,6 @@ async def cygames_voice_guess(bot, ev: CQEvent):
         await download_voice_ci(bot, ev, sv.logger)
         file_list = os.listdir(DIR_PATH)
         chosen_file = random.choice(file_list)
-        file_suffix = chosen_file.rsplit('.', 1)[1]
-        if file_suffix != 'silk' and file_suffix != 'amr':
-            await bot.send(ev, "警告: 发现非silk或amr格式的语音, 建议使用软件转成silk格式, 否则可能无法发送.")
         file_path = os.path.join(DIR_PATH, chosen_file)
         await bot.send(ev, f'猜猜这个“cygames”语音来自哪位角色? ({ONE_TURN_TIME}s后公布答案)')
         await bot.send(ev, MessageSegment.record(f'file:///{os.path.abspath(file_path)}'))
