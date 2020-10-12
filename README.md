@@ -39,4 +39,4 @@ A [HoshinoBot](https://github.com/Ice-Cirno/HoshinoBot) based [PCR](http://prico
 
 7. ~~将转换好的全部silk格式语音文件放回HoshinoBot的资源文件夹`res/voice_ci`中，并把这个文件夹里之前的m4a语音文件全部删除。~~
 
-8. ~~现在可以正常使用猜语音插件了~ ~~
+8. 现在可以正常使用猜语音插件了~
