@@ -118,6 +118,36 @@ async def cygames_voice_guess(bot, ev: CQEvent):
         c = chara.fromid(game.answer)
     await bot.send(ev, f"正确答案是: {c.name} {c.icon.cqcode}\n很遗憾，没有人答对~")
 
+@sv.on_prefix('猜语音')
+async def voice_guess(bot, ev: CQEvent):
+    if gm.is_playing(ev.group_id):
+        await bot.finish(ev, "游戏仍在进行中…")
+    with gm.start_game(ev.group_id) as game:
+        record_path = os.path.join(HOSHINO_RES_PATH, 'record')
+        if not os.path.exists(record_path):
+            await cygames_voice_guess(bot, ev)
+            return
+        file_list = os.listdir(record_path)
+        chosen_chara = random.choice(file_list)
+        chara_path = os.path.join(HOSHINO_RES_PATH, 'record', chosen_chara)
+        chara_list = os.listdir(chara_path)
+        chosen_file = random.choice(chara_list)
+        file_path = os.path.join(chara_path, chosen_file)
+        await bot.send(ev, f'猜猜这段语音来自哪位角色? ({ONE_TURN_TIME}s后公布答案)')
+        await bot.send(ev, MessageSegment.record(f'file:///{os.path.abspath(file_path)}'))
+        #兼容"小仓唯骂我"插件的语音资源
+        if chosen_chara == 'mawo':
+            game.answer = 1036
+        else:
+            game.answer = int(chosen_chara)
+        #print(chara.fromid(game.answer).name)
+        await asyncio.sleep(ONE_TURN_TIME)
+        # 结算
+        if game.winner:
+            return
+        c = chara.fromid(game.answer)
+    await bot.send(ev, f"正确答案是: {c.name} {c.icon.cqcode}\n很遗憾，没有人答对~")
+
 
 @sv.on_message()
 async def on_input_chara_name(bot, ev: CQEvent):
